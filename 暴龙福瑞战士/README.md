@@ -19,7 +19,7 @@ Then open:
 
 http://localhost:8080
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ---
 

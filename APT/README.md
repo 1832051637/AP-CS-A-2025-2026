@@ -17,7 +17,7 @@ Make sure you are in the folder that contains PacManGame.java
 java PacManGame.java
 ```
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ---
 

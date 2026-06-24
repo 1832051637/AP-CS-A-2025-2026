@@ -18,7 +18,7 @@ Make sure you are in the folder that contains Main.java.
 java Main.java
 ```
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ---
 

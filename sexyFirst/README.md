@@ -18,7 +18,7 @@ mvn package
 mvn javafx:run
 ```
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ---
 

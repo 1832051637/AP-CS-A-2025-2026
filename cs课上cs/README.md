@@ -19,7 +19,7 @@ javac *java
 java SuperMariaGame
 ```
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ![Screenshot](screenshot2.png)
 ---

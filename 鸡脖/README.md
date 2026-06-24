@@ -15,7 +15,7 @@ java ForestFireAndIce.java
 ```
 
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ---
 

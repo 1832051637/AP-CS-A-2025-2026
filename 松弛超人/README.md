@@ -15,7 +15,7 @@ Catch me if you can.
 Run index.html
 
 ## Screenshot
-java
+
 ![Screenshot](screenshot.png)
 ---
 
