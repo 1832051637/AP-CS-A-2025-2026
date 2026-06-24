@@ -1,0 +1,188 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: 训练师小艾
+      - generic [ref=e9]: Lv.28
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - strong [ref=e15]: 38/100
+        - generic [ref=e16]: 状态偏低
+      - generic [ref=e18]:
+        - strong [ref=e19]: 50%
+        - generic [ref=e20]: 情绪平稳
+      - strong [ref=e23]: 1,315
+      - strong [ref=e26]: "24"
+      - generic [ref=e27]:
+        - generic [ref=e28]: 06/10 07:38
+        - generic [ref=e30]: 晴天
+      - button "设置" [ref=e31] [cursor=pointer]
+  - main [ref=e32]:
+    - complementary [ref=e33]:
+      - generic [ref=e34]:
+        - heading "主菜单" [level=2] [ref=e35]
+        - button "家园" [active] [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: 家园
+        - button "宠物" [ref=e38] [cursor=pointer]:
+          - generic [ref=e39]: 宠物
+        - button "训练" [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]: 训练
+        - button "探险" [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: 探险
+        - button "任务" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 任务
+        - button "商店" [ref=e46] [cursor=pointer]:
+          - generic [ref=e47]: 商店
+        - button "图鉴" [ref=e48] [cursor=pointer]:
+          - generic [ref=e49]: 图鉴
+        - button "成就" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]: 成就
+        - button "好友" [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]: 好友
+        - button "规则" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: 规则
+        - button "设置" [ref=e56] [cursor=pointer]:
+          - generic [ref=e57]: 设置
+      - generic [ref=e58]:
+        - heading "当前区域" [level=2] [ref=e60]
+        - generic [ref=e62]: 森林小屋
+        - generic [ref=e63]:
+          - generic [ref=e64]: 舒适度
+          - strong [ref=e65]: Lv.3
+        - generic [ref=e68]: 620/900
+        - button "升级家园" [ref=e69] [cursor=pointer]
+    - generic [ref=e433]:
+      - generic [ref=e434]:
+        - generic [ref=e435]:
+          - generic [ref=e436]:
+            - heading "团团" [level=1] [ref=e437]
+            - generic [ref=e438]: ♂
+            - button "✎" [ref=e439] [cursor=pointer]
+          - generic [ref=e440]: 布丁仓鼠
+          - generic "宠物星级" [ref=e441]
+          - generic [ref=e442]:
+            - generic [ref=e443]: 幼年初
+            - strong [ref=e444]: 成长值：179/500
+        - button "切换宠物" [ref=e447] [cursor=pointer]
+      - img "布丁仓鼠" [ref=e449]
+      - generic [ref=e450]:
+        - generic [ref=e452]:
+          - generic [ref=e453]: 饱食度
+          - strong [ref=e454]: 0/100
+        - generic [ref=e457]:
+          - generic [ref=e458]: 清洁度
+          - strong [ref=e459]: 63/100
+        - generic [ref=e463]:
+          - generic [ref=e464]: 活力值
+          - strong [ref=e465]: 38/100
+        - generic [ref=e469]:
+          - generic [ref=e470]: 亲密度
+          - strong [ref=e471]: 30/100
+    - complementary [ref=e474]:
+      - generic [ref=e475]:
+        - heading "可执行动作" [level=2] [ref=e477]
+        - generic [ref=e478]:
+          - button "喂食" [ref=e479] [cursor=pointer]:
+            - generic [ref=e480]: 喂食
+          - button "互动" [ref=e481] [cursor=pointer]:
+            - generic [ref=e482]: 互动
+          - button "清洁" [ref=e483] [cursor=pointer]:
+            - generic [ref=e484]: 清洁
+          - button "玩耍" [ref=e485] [cursor=pointer]:
+            - generic [ref=e486]: 玩耍
+          - button "训练" [ref=e487] [cursor=pointer]:
+            - generic [ref=e488]: 训练
+          - button "休息" [ref=e489] [cursor=pointer]:
+            - generic [ref=e490]: 休息
+      - generic [ref=e491]:
+        - heading "今日计划 (0/4)" [level=2] [ref=e493]
+        - generic [ref=e494]:
+          - generic [ref=e495]:
+            - generic [ref=e496]:
+              - generic [ref=e497]: 喂食 2 次
+              - generic [ref=e498]: EXP 40
+            - button "前往" [ref=e500] [cursor=pointer]
+          - generic [ref=e501]:
+            - generic [ref=e502]:
+              - generic [ref=e503]: 互动 1 次
+              - generic [ref=e504]: EXP 30
+            - button "前往" [ref=e506] [cursor=pointer]
+          - generic [ref=e507]:
+            - generic [ref=e508]:
+              - generic [ref=e509]: 清洁 1 次
+              - generic [ref=e510]: EXP 30
+            - button "前往" [ref=e512] [cursor=pointer]
+          - generic [ref=e513]:
+            - generic [ref=e514]:
+              - generic [ref=e515]: 训练 1 次
+              - generic [ref=e516]: EXP 30
+            - button "前往" [ref=e518] [cursor=pointer]
+  - generic [ref=e519]:
+    - generic [ref=e520]:
+      - heading "物品背包" [level=2] [ref=e522]
+      - generic [ref=e523]:
+        - button "全部" [ref=e524] [cursor=pointer]
+        - button "食物" [ref=e525] [cursor=pointer]
+        - button "玩具" [ref=e526] [cursor=pointer]
+        - button "道具" [ref=e527] [cursor=pointer]
+        - button "材料" [ref=e528] [cursor=pointer]
+      - generic [ref=e529]:
+        - article [ref=e530]:
+          - img "营养粮" [ref=e531]
+          - strong [ref=e532]: x13
+          - generic [ref=e533]: 营养粮
+        - article [ref=e534]:
+          - img "玩具球" [ref=e535]
+          - strong [ref=e536]: x6
+          - generic [ref=e537]: 玩具球
+        - article [ref=e538]:
+          - img "洗护液" [ref=e539]
+          - strong [ref=e540]: x8
+          - generic [ref=e541]: 洗护液
+        - article [ref=e542]:
+          - img "木屋" [ref=e543]
+          - strong [ref=e544]: x2
+          - generic [ref=e545]: 木屋
+        - article [ref=e546]:
+          - img "葵花籽" [ref=e547]
+          - strong [ref=e548]: x28
+          - generic [ref=e549]: 葵花籽
+        - article [ref=e550]:
+          - img "水果干" [ref=e551]
+          - strong [ref=e552]: x15
+          - generic [ref=e553]: 水果干
+        - article [ref=e554]:
+          - img "牧草" [ref=e555]
+          - strong [ref=e556]: x22
+          - generic [ref=e557]: 牧草
+        - article [ref=e558]:
+          - img "磨牙棒" [ref=e559]
+          - strong [ref=e560]: x7
+          - generic [ref=e561]: 磨牙棒
+        - article [ref=e562]:
+          - img "跑轮" [ref=e563]
+          - strong [ref=e564]: x1
+          - generic [ref=e565]: 跑轮
+        - article [ref=e566]:
+          - img "浴沙" [ref=e567]
+          - strong [ref=e568]: x4
+          - generic [ref=e569]: 浴沙
+      - generic [ref=e570]:
+        - generic [ref=e571]: 背包容量
+        - strong [ref=e572]: 29/40
+        - button "整理" [ref=e573] [cursor=pointer]
+    - generic [ref=e574]:
+      - heading "财务状况" [level=2] [ref=e576]
+      - generic [ref=e577]:
+        - generic [ref=e578]:
+          - generic [ref=e579]: 金币余额
+          - strong [ref=e580]: 1,315
+        - generic [ref=e581]:
+          - generic [ref=e582]: 今日收入
+          - strong [ref=e583]: "+65"
+        - generic [ref=e584]:
+          - generic [ref=e585]: 今日支出
+          - strong [ref=e586]: "-5"
+        - generic [ref=e587]:
+          - generic [ref=e588]: 本周利润
+          - strong [ref=e589]: "+310"
+      - button "财务明细" [ref=e598] [cursor=pointer]

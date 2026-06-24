@@ -1,0 +1,124 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: 训练师小艾
+      - generic [ref=e9]: Lv.28
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - strong [ref=e15]: 38/100
+        - generic [ref=e16]: 状态偏低
+      - generic [ref=e18]:
+        - strong [ref=e19]: 50%
+        - generic [ref=e20]: 情绪平稳
+      - strong [ref=e23]: 1,315
+      - strong [ref=e26]: "24"
+      - generic [ref=e27]:
+        - generic [ref=e28]: 06/10 07:33
+        - generic [ref=e30]: 晴天
+      - button "设置" [ref=e31] [cursor=pointer]
+  - main [ref=e32]:
+    - complementary [ref=e33]:
+      - generic [ref=e34]:
+        - heading "主菜单" [level=2] [ref=e35]
+        - button "家园" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: 家园
+        - button "宠物" [ref=e38] [cursor=pointer]:
+          - generic [ref=e39]: 宠物
+        - button "训练" [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]: 训练
+        - button "探险" [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: 探险
+        - button "任务" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 任务
+        - button "商店" [ref=e46] [cursor=pointer]:
+          - generic [ref=e47]: 商店
+        - button "图鉴" [active] [ref=e48] [cursor=pointer]:
+          - generic [ref=e49]: 图鉴
+        - button "成就" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]: 成就
+        - button "好友" [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]: 好友
+        - button "规则" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: 规则
+        - button "设置" [ref=e56] [cursor=pointer]:
+          - generic [ref=e57]: 设置
+      - generic [ref=e58]:
+        - heading "当前区域" [level=2] [ref=e60]
+        - generic [ref=e62]: 森林小屋
+        - generic [ref=e63]:
+          - generic [ref=e64]: 舒适度
+          - strong [ref=e65]: Lv.3
+        - generic [ref=e68]: 620/900
+        - button "升级家园" [ref=e69] [cursor=pointer]
+    - generic [ref=e238]:
+      - generic [ref=e239]:
+        - generic [ref=e241]:
+          - heading "宠物图鉴" [level=1] [ref=e378]
+          - paragraph [ref=e243]: 记录已解锁的宠物、场景与收藏项。
+        - generic [ref=e244]:
+          - generic [ref=e379]:
+            - strong [ref=e380]: "6"
+            - generic [ref=e381]: 条目数
+          - generic [ref=e382]:
+            - strong [ref=e383]: "6"
+            - generic [ref=e384]: 已解锁
+          - generic [ref=e385]:
+            - strong [ref=e386]: 78%
+            - generic [ref=e387]: 收藏度
+      - generic [ref=e388]:
+        - heading "宠物图鉴" [level=2] [ref=e390]
+        - generic [ref=e391]:
+          - article [ref=e392]:
+            - img "布丁仓鼠" [ref=e393]
+            - heading "布丁仓鼠" [level=3] [ref=e394]
+            - paragraph [ref=e395]: 温和亲人的常见宠物。
+            - generic [ref=e396]: 已收录
+          - article [ref=e397]:
+            - img "云朵猫" [ref=e398]
+            - heading "云朵猫" [level=3] [ref=e399]
+            - paragraph [ref=e400]: 爱撒娇的猫咪伙伴。
+            - generic [ref=e401]: 已收录
+          - article [ref=e402]:
+            - img "灰耳小鼠" [ref=e403]
+            - heading "灰耳小鼠" [level=3] [ref=e404]
+            - paragraph [ref=e405]: 机灵活泼的小鼠。
+            - generic [ref=e406]: 已收录
+          - article [ref=e407]:
+            - img "森林小屋" [ref=e408]
+            - heading "森林小屋" [level=3] [ref=e409]
+            - paragraph [ref=e410]: 当前主居所。
+            - generic [ref=e411]: 已收录
+          - article [ref=e412]:
+            - img "跑轮" [ref=e413]
+            - heading "跑轮" [level=3] [ref=e414]
+            - paragraph [ref=e415]: 玩具收藏。
+            - generic [ref=e416]: 已收录
+          - article [ref=e417]:
+            - img "水瓶" [ref=e418]
+            - heading "水瓶" [level=3] [ref=e419]
+            - paragraph [ref=e420]: 场景道具。
+            - generic [ref=e421]: 已收录
+    - complementary [ref=e288]:
+      - generic [ref=e289]:
+        - heading "图鉴摘要" [level=2] [ref=e422]
+        - generic [ref=e292]:
+          - generic [ref=e423]:
+            - generic [ref=e424]: 最近解锁
+            - strong [ref=e425]: 布丁仓鼠
+          - generic [ref=e426]:
+            - generic [ref=e427]: 未解锁
+            - strong [ref=e428]: 等后续扩展
+          - generic [ref=e429]:
+            - generic [ref=e430]: 收藏目标
+            - strong [ref=e431]: 全图鉴
+      - generic [ref=e302]:
+        - heading "快捷行动" [level=2] [ref=e304]
+        - generic [ref=e305]:
+          - button "喂食" [ref=e306] [cursor=pointer]:
+            - generic [ref=e307]: 喂食
+          - button "互动" [ref=e308] [cursor=pointer]:
+            - generic [ref=e309]: 互动
+          - button "清洁" [ref=e310] [cursor=pointer]:
+            - generic [ref=e311]: 清洁
+          - button "保存" [ref=e312] [cursor=pointer]:
+            - generic [ref=e313]: 保存

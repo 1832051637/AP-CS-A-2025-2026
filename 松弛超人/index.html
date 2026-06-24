@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Game - 本地多人追逐</title>
+    <link rel="stylesheet" href="css/style.css?v=20260611-event-sfx">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 主菜单 -->
+        <div id="menu" class="screen active">
+            <h1>🎮 Tag Game</h1>
+            <p class="subtitle">本地多人追逐游戏</p>
+
+            <div class="menu-options">
+                <h2>游戏设置</h2>
+
+                <div class="setting-group">
+                    <label>玩家数量</label>
+                    <div class="button-group">
+                        <button class="btn-option" data-setting="players" data-value="2">2人</button>
+                        <button class="btn-option" data-setting="players" data-value="3">3人</button>
+                        <button class="btn-option selected" data-setting="players" data-value="4">4人</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label>游戏时间</label>
+                    <div class="button-group">
+                        <button class="btn-option" data-setting="time" data-value="60">60秒</button>
+                        <button class="btn-option selected" data-setting="time" data-value="120">120秒</button>
+                        <button class="btn-option" data-setting="time" data-value="180">180秒</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label>地图选择</label>
+                    <div class="button-group map-button-group">
+                        <button class="btn-option selected" data-setting="map" data-value="1">城市街区</button>
+                        <button class="btn-option" data-setting="map" data-value="2">火山场景</button>
+                        <button class="btn-option" data-setting="map" data-value="3">森林迷宫</button>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn-primary">开始游戏</button>
+
+            <div class="controls-info">
+                <h3>🎮 控制说明</h3>
+                <div class="control-grid">
+                    <div class="control-item red">
+                        <span class="player-dot"></span>
+                        <span class="player-label">P1</span>
+                        <span class="keys">W A D / 空格跳跃 / E使用道具</span>
+                    </div>
+                    <div class="control-item blue">
+                        <span class="player-dot"></span>
+                        <span class="player-label">P2</span>
+                        <span class="keys">↑ ↓ ← → / ↑跳跃</span>
+                    </div>
+                    <div class="control-item yellow">
+                        <span class="player-dot"></span>
+                        <span class="player-label">P3</span>
+                        <span class="keys">I J L</span>
+                    </div>
+                    <div class="control-item green">
+                        <span class="player-dot"></span>
+                        <span class="player-label">P4</span>
+                        <span class="keys">T F H</span>
+                    </div>
+                </div>
+                <p style="margin-top:15px; color:#666;">💡 按 E 键拾取并使用道具</p>
+            </div>
+        </div>
+
+        <!-- 游戏画面 -->
+        <div id="game" class="screen">
+            <canvas id="game-canvas"></canvas>
+
+            <div id="hud">
+                <div id="timer">02:00</div>
+                <div id="it-indicator">谁是鬼?</div>
+                <button id="music-toggle" type="button">音乐开</button>
+            </div>
+
+            <div id="item-guide">
+                <h4>道具说明</h4>
+                <div class="guide-grid">
+                    <span class="guide-item" style="color:#888888">隐=隐身2.5秒</span>
+                    <span class="guide-item" style="color:#ffeb3b">速=加速5秒</span>
+                    <span class="guide-item" style="color:#9c27b0">闪=瞬移80px</span>
+                    <span class="guide-item" style="color:#e91e63">眼=透视6秒</span>
+                    <span class="guide-item" style="color:#ff5722">锁=减速敌人</span>
+                    <span class="guide-item" style="color:#f44336">冲=鬼冲刺</span>
+                    <span class="guide-item" style="color:#607d8b">雾=迷雾3秒</span>
+                    <span class="guide-item" style="color:#00bcd4">停=冻结1秒</span>
+                    <span class="guide-item" style="color:#2196f3">盾=抵挡1次</span>
+                    <span class="guide-item" style="color:#4caf50">换=互换位置</span>
+                    <span class="guide-item" style="color:#ffd700">电=电击(E/L)</span>
+                </div>
+                <p style="margin-top:8px;font-size:11px;color:#666;">碰到道具自动使用</p>
+            </div>
+        </div>
+
+        <!-- 结束画面 -->
+        <div id="end-screen" class="screen">
+            <h1 id="winner-text">游戏结束</h1>
+            <p id="winner-player"></p>
+            <button id="btn-rematch-request" class="btn-primary">发起再战</button>
+            <div id="rematch-panel">
+                <p>抓捕方发起再战，是否接受挑战？</p>
+                <button id="btn-rematch-accept" class="btn-primary">同意再战</button>
+            </div>
+            <button id="btn-restart" class="btn-primary">再玩一次</button>
+            <button id="btn-menu" class="btn-secondary">返回菜单</button>
+        </div>
+
+        <div id="tunnel-transition">
+            <div class="tunnel-core"></div>
+            <div class="tunnel-text">空间隧道开启<br><span>火山关卡载入中</span></div>
+        </div>
+    </div>
+
+    <script src="js/game.js?v=20260611-event-sfx"></script>
+</body>
+</html>

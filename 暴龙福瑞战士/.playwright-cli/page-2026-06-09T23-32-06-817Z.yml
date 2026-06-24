@@ -1,0 +1,124 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: 训练师小艾
+      - generic [ref=e9]: Lv.28
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - strong [ref=e15]: 43/100
+        - generic [ref=e16]: 状态偏低
+      - generic [ref=e18]:
+        - strong [ref=e19]: 57%
+        - generic [ref=e20]: 情绪平稳
+      - strong [ref=e23]: 1,305
+      - strong [ref=e26]: "24"
+      - generic [ref=e27]:
+        - generic [ref=e28]: 06/10 07:31
+        - generic [ref=e30]: 晴天
+      - button "设置" [ref=e31] [cursor=pointer]
+  - main [ref=e32]:
+    - complementary [ref=e33]:
+      - generic [ref=e34]:
+        - heading "主菜单" [level=2] [ref=e35]
+        - button "家园" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: 家园
+        - button "宠物" [ref=e38] [cursor=pointer]:
+          - generic [ref=e39]: 宠物
+        - button "训练" [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]: 训练
+        - button "探险" [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: 探险
+        - button "任务" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 任务
+        - button "商店" [ref=e46] [cursor=pointer]:
+          - generic [ref=e47]: 商店
+        - button "图鉴" [ref=e48] [cursor=pointer]:
+          - generic [ref=e49]: 图鉴
+        - button "成就" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]: 成就
+        - button "好友" [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]: 好友
+        - button "规则" [active] [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: 规则
+        - button "设置" [ref=e56] [cursor=pointer]:
+          - generic [ref=e57]: 设置
+      - generic [ref=e58]:
+        - heading "当前区域" [level=2] [ref=e60]
+        - generic [ref=e62]: 森林小屋
+        - generic [ref=e63]:
+          - generic [ref=e64]: 舒适度
+          - strong [ref=e65]: Lv.3
+        - generic [ref=e68]: 620/900
+        - button "升级家园" [ref=e69] [cursor=pointer]
+    - generic [ref=e238]:
+      - generic [ref=e239]:
+        - generic [ref=e241]:
+          - heading "游戏规则" [level=1] [ref=e242]
+          - paragraph [ref=e243]: 了解基础循环、状态、商店、领养和探索的结算方式。
+        - generic [ref=e244]:
+          - generic [ref=e245]:
+            - strong [ref=e246]: "6"
+            - generic [ref=e247]: 规则条目
+          - generic [ref=e248]:
+            - strong [ref=e249]: 照护经营
+            - generic [ref=e250]: 核心循环
+          - generic [ref=e251]:
+            - strong [ref=e252]: 金币/库存
+            - generic [ref=e253]: 资源
+      - generic [ref=e254]:
+        - heading "游戏规则" [level=2] [ref=e256]
+        - generic [ref=e257]:
+          - article [ref=e258]:
+            - strong [ref=e259]: "1"
+            - generic [ref=e260]:
+              - heading "经营目标" [level=3] [ref=e261]
+              - paragraph [ref=e262]: 照护猫、鼠和仓鼠等宠物，维持金币、库存和宠物状态，让家园稳定成长。
+          - article [ref=e263]:
+            - strong [ref=e264]: "2"
+            - generic [ref=e265]:
+              - heading "宠物状态" [level=3] [ref=e266]
+              - paragraph [ref=e267]: 饱食度由饥饿值换算，越高越好；清洁度取决于健康；心情和亲密度会影响成长与售价。
+          - article [ref=e268]:
+            - strong [ref=e269]: "3"
+            - generic [ref=e270]:
+              - heading "日常动作" [level=3] [ref=e271]
+              - paragraph [ref=e272]: 喂食消耗营养粮或金币，清洁消耗洗护液或金币，互动优先消耗玩具，休息恢复健康和心情。
+          - article [ref=e273]:
+            - strong [ref=e274]: "4"
+            - generic [ref=e275]:
+              - heading "训练与探索" [level=3] [ref=e276]
+              - paragraph [ref=e277]: 训练需要金币，会提升心情、健康和亲密度；探索需要宠物状态良好，完成后带回金币并增加饥饿。
+          - article [ref=e278]:
+            - strong [ref=e279]: "5"
+            - generic [ref=e280]:
+              - heading "商店与背包" [level=3] [ref=e281]
+              - paragraph [ref=e282]: 商店购买会扣除金币并增加对应库存；金币不足时不会购买，也不会让余额被扣到 0 以下。
+          - article [ref=e283]:
+            - strong [ref=e284]: "6"
+            - generic [ref=e285]:
+              - heading "领养与出售" [level=3] [ref=e286]
+              - paragraph [ref=e287]: 领养需要支付宠物标价；出售会获得宠物标价加状态收益，但至少要保留一只宠物。
+    - complementary [ref=e288]:
+      - generic [ref=e289]:
+        - heading "规则摘要" [level=2] [ref=e291]
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e294]: 目标
+            - strong [ref=e295]: 稳定经营
+          - generic [ref=e296]:
+            - generic [ref=e297]: 关键状态
+            - strong [ref=e298]: 饱食/清洁/心情
+          - generic [ref=e299]:
+            - generic [ref=e300]: 失败保护
+            - strong [ref=e301]: 余额校验
+      - generic [ref=e302]:
+        - heading "快捷行动" [level=2] [ref=e304]
+        - generic [ref=e305]:
+          - button "喂食" [ref=e306] [cursor=pointer]:
+            - generic [ref=e307]: 喂食
+          - button "互动" [ref=e308] [cursor=pointer]:
+            - generic [ref=e309]: 互动
+          - button "清洁" [ref=e310] [cursor=pointer]:
+            - generic [ref=e311]: 清洁
+          - button "保存" [ref=e312] [cursor=pointer]:
+            - generic [ref=e313]: 保存

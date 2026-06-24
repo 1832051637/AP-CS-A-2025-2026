@@ -1,0 +1,537 @@
+/* ========================================
+   Tag Game - 样式文件
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* ========================================
+   游戏容器
+   ======================================== */
+#game-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    z-index: 100;
+}
+
+/* ========================================
+   屏幕切换
+   ======================================== */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ========================================
+   主菜单
+   ======================================== */
+#menu {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow: hidden;
+    background: #111827;
+}
+
+#menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--menu-map-bg, url('../assets/city_background.png'));
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.1) brightness(0.72);
+    transform: scale(1.04);
+    transition: filter 0.35s ease, transform 0.35s ease;
+    z-index: 0;
+}
+
+#menu::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(5, 8, 14, 0.46), rgba(5, 8, 14, 0.82)),
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.14), transparent 32%);
+    z-index: 0;
+}
+
+#menu > * {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#menu h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+    background-size: 300% 300%;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 40px;
+}
+
+/* ========================================
+   设置选项
+   ======================================== */
+.menu-options {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.menu-options h2 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #feca57;
+}
+
+.setting-group {
+    margin-bottom: 25px;
+}
+
+.setting-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-option {
+    padding: 12px 24px;
+    border: 2px solid #444;
+    background: transparent;
+    color: #888;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-option:hover {
+    border-color: #666;
+    color: #fff;
+}
+
+.btn-option.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: #fff;
+}
+
+.map-button-group {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 14px;
+    width: 100%;
+}
+
+.map-button-group .btn-option {
+    position: relative;
+    min-height: 112px;
+    overflow: hidden;
+    border-color: rgba(255, 255, 255, 0.28);
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 -70px 54px rgba(0,0,0,0.62);
+}
+
+.map-button-group .btn-option::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.56));
+    z-index: 0;
+}
+
+.map-button-group .btn-option[data-value="1"] {
+    background-image: url('../assets/city_background.png');
+}
+
+.map-button-group .btn-option[data-value="2"] {
+    background-image: url('../assets/volcano_bar_1.png');
+}
+
+.map-button-group .btn-option[data-value="3"] {
+    background-image: url('../assets/forest_background.jpg');
+}
+
+.map-button-group .btn-option {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding: 0 14px 16px;
+}
+
+.map-button-group .btn-option.selected {
+    border-color: #ffd36a;
+    box-shadow:
+        inset 0 -72px 54px rgba(0,0,0,0.58),
+        0 0 0 3px rgba(255, 211, 106, 0.26),
+        0 12px 30px rgba(0, 0, 0, 0.28);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   按钮
+   ======================================== */
+.btn-primary {
+    width: 100%;
+    max-width: 300px;
+    padding: 18px 40px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    color: #667eea;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: #fff;
+}
+
+/* ========================================
+   控制说明
+   ======================================== */
+.controls-info {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+}
+
+.controls-info h3 {
+    margin-bottom: 20px;
+    color: #48dbfb;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.player-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.control-item.red .player-dot { background: #00ffff; }    /* 青色 */
+.control-item.blue .player-dot { background: #ff00ff; }    /* 洋红 */
+.control-item.yellow .player-dot { background: #ffff00; }  /* 黄色 */
+.control-item.green .player-dot { background: #00ff00; }  /* 绿色 */
+
+.player-label {
+    font-weight: bold;
+    min-width: 30px;
+}
+
+.keys {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   游戏画面 - 全屏
+   ======================================== */
+#game {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#game-canvas {
+    width: 100vw;
+    height: 100vh;
+    background: #1a1a2e;
+    border: none;
+    border-radius: 0;
+    display: block;
+}
+
+/* ========================================
+   HUD (抬头显示)
+   ======================================== */
+#hud {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    z-index: 1000;
+}
+
+#timer {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 25px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    font-family: monospace;
+}
+
+#it-indicator {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    animation: pulse 1.5s ease infinite;
+}
+
+#music-toggle {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#music-toggle:hover {
+    background: rgba(20, 20, 20, 0.82);
+}
+
+#music-toggle.muted {
+    color: #c8c8c8;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ========================================
+   结束画面
+   ======================================== */
+#end-screen {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#end-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#winner-player {
+    font-size: 1.8rem;
+    margin-bottom: 26px;
+    color: #feca57;
+}
+
+#rematch-panel {
+    display: none;
+    max-width: 360px;
+    margin: 18px auto;
+    padding: 18px;
+    border: 1px solid rgba(255, 130, 70, 0.45);
+    background: rgba(20, 8, 4, 0.78);
+    border-radius: 8px;
+}
+
+#rematch-panel.active {
+    display: block;
+}
+
+#rematch-panel p {
+    margin-bottom: 14px;
+    color: #ffd8a8;
+}
+
+#tunnel-transition {
+    position: fixed;
+    inset: 0;
+    display: none;
+    place-items: center;
+    overflow: hidden;
+    z-index: 5000;
+    background: #09010f;
+}
+
+#tunnel-transition.active {
+    display: grid;
+}
+
+.tunnel-core {
+    width: 140vmax;
+    height: 140vmax;
+    border-radius: 50%;
+    background:
+        repeating-conic-gradient(from 0deg, rgba(255, 93, 18, 0.95) 0 10deg, rgba(93, 38, 255, 0.9) 10deg 20deg, rgba(255, 214, 64, 0.9) 20deg 28deg),
+        radial-gradient(circle, #fff 0 4%, #ff7a18 12%, #301050 35%, #05000a 70%);
+    animation: tunnel-spin 1.8s linear infinite, tunnel-pulse 1.1s ease-in-out infinite;
+}
+
+.tunnel-text {
+    position: absolute;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 18px #ff6b00, 0 0 34px #7c3cff;
+}
+
+.tunnel-text span {
+    font-size: 1.1rem;
+    color: #ffd8a8;
+}
+
+@keyframes tunnel-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes tunnel-pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.35); }
+}
+
+/* ========================================
+   道具说明面板
+   ======================================== */
+#item-guide {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 12px;
+    color: #fff;
+    z-index: 1000;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#item-guide h4 {
+    margin-bottom: 8px;
+    color: #feca57;
+    font-size: 13px;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 15px;
+}
+
+.guide-item {
+    font-size: 11px;
+}
+
+/* ========================================
+   响应式
+   ======================================== */
+@media (max-width: 600px) {
+    #menu h1 {
+        font-size: 2.5rem;
+    }
+
+    .control-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #game-canvas {
+        height: 400px;
+    }
+
+    #item-guide {
+        font-size: 10px;
+        padding: 8px 10px;
+        max-width: 150px;
+    }
+
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+}

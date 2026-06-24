@@ -1,0 +1,134 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: 训练师小艾
+      - generic [ref=e9]: Lv.28
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - strong [ref=e15]: 38/100
+        - generic [ref=e16]: 状态偏低
+      - generic [ref=e18]:
+        - strong [ref=e19]: 50%
+        - generic [ref=e20]: 情绪平稳
+      - strong [ref=e23]: 1,315
+      - strong [ref=e26]: "24"
+      - generic [ref=e27]:
+        - generic [ref=e28]: 06/10 07:33
+        - generic [ref=e30]: 晴天
+      - button "设置" [ref=e31] [cursor=pointer]
+  - main [ref=e32]:
+    - complementary [ref=e33]:
+      - generic [ref=e34]:
+        - heading "主菜单" [level=2] [ref=e35]
+        - button "家园" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: 家园
+        - button "宠物" [ref=e38] [cursor=pointer]:
+          - generic [ref=e39]: 宠物
+        - button "训练" [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]: 训练
+        - button "探险" [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: 探险
+        - button "任务" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 任务
+        - button "商店" [ref=e46] [cursor=pointer]:
+          - generic [ref=e47]: 商店
+        - button "图鉴" [ref=e48] [cursor=pointer]:
+          - generic [ref=e49]: 图鉴
+        - button "成就" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]: 成就
+        - button "好友" [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]: 好友
+        - button "规则" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: 规则
+        - button "设置" [ref=e56] [cursor=pointer]:
+          - generic [ref=e57]: 设置
+      - generic [ref=e58]:
+        - heading "当前区域" [level=2] [ref=e60]
+        - generic [ref=e62]: 森林小屋
+        - generic [ref=e63]:
+          - generic [ref=e64]: 舒适度
+          - strong [ref=e65]: Lv.3
+        - generic [ref=e68]: 620/900
+        - button "升级家园" [ref=e69] [cursor=pointer]
+    - generic [ref=e238]:
+      - generic [ref=e239]:
+        - generic [ref=e241]:
+          - heading "补给商店" [level=1] [ref=e314]
+          - paragraph [ref=e243]: 购买食物、玩具、清洁和材料，维持家园运转。
+        - generic [ref=e244]:
+          - generic [ref=e315]:
+            - strong [ref=e316]: 1,315 金币
+            - generic [ref=e317]: 余额
+          - generic [ref=e318]:
+            - strong [ref=e319]: "5"
+            - generic [ref=e320]: 商品数
+          - generic [ref=e321]:
+            - strong [ref=e322]: 29/40
+            - generic [ref=e323]: 库存
+      - generic [ref=e324]:
+        - heading "补给商店" [level=2] [ref=e326]
+        - generic [ref=e327]:
+          - article [ref=e328]:
+            - img "营养粮" [ref=e329]
+            - heading "营养粮" [level=3] [ref=e330]
+            - paragraph [ref=e331]: 恢复饱食度。
+            - generic [ref=e332]:
+              - generic [ref=e333]: 价格
+              - strong [ref=e334]: 25 金币
+            - button "购买" [active] [ref=e335] [cursor=pointer]
+          - article [ref=e336]:
+            - img "玩具球" [ref=e337]
+            - heading "玩具球" [level=3] [ref=e338]
+            - paragraph [ref=e339]: 提升互动效率。
+            - generic [ref=e340]:
+              - generic [ref=e341]: 价格
+              - strong [ref=e342]: 40 金币
+            - button "购买" [ref=e343] [cursor=pointer]
+          - article [ref=e344]:
+            - img "洗护液" [ref=e345]
+            - heading "洗护液" [level=3] [ref=e346]
+            - paragraph [ref=e347]: 恢复清洁状态。
+            - generic [ref=e348]:
+              - generic [ref=e349]: 价格
+              - strong [ref=e350]: 30 金币
+            - button "购买" [ref=e351] [cursor=pointer]
+          - article [ref=e352]:
+            - img "木屋券" [ref=e353]
+            - heading "木屋券" [level=3] [ref=e354]
+            - paragraph [ref=e355]: 扩充家园。
+            - generic [ref=e356]:
+              - generic [ref=e357]: 价格
+              - strong [ref=e358]: 120 金币
+            - button "购买" [ref=e359] [cursor=pointer]
+          - article [ref=e360]:
+            - img "牧草" [ref=e361]
+            - heading "牧草" [level=3] [ref=e362]
+            - paragraph [ref=e363]: 基础家园材料。
+            - generic [ref=e364]:
+              - generic [ref=e365]: 价格
+              - strong [ref=e366]: 18 金币
+            - button "购买" [ref=e367] [cursor=pointer]
+    - complementary [ref=e288]:
+      - generic [ref=e289]:
+        - heading "商店摘要" [level=2] [ref=e368]
+        - generic [ref=e292]:
+          - generic [ref=e369]:
+            - generic [ref=e370]: 热卖商品
+            - strong [ref=e371]: 营养粮
+          - generic [ref=e372]:
+            - generic [ref=e373]: 价格
+            - strong [ref=e374]: 25 金币
+          - generic [ref=e375]:
+            - generic [ref=e376]: 折扣
+            - strong [ref=e377]: 暂无
+      - generic [ref=e302]:
+        - heading "快捷行动" [level=2] [ref=e304]
+        - generic [ref=e305]:
+          - button "喂食" [ref=e306] [cursor=pointer]:
+            - generic [ref=e307]: 喂食
+          - button "互动" [ref=e308] [cursor=pointer]:
+            - generic [ref=e309]: 互动
+          - button "清洁" [ref=e310] [cursor=pointer]:
+            - generic [ref=e311]: 清洁
+          - button "保存" [ref=e312] [cursor=pointer]:
+            - generic [ref=e313]: 保存

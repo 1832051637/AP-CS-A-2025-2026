@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宠物养成店</title>
+  <link rel="icon" href="data:," />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div id="app" class="shell" :class="shellClasses">
+    <div class="feedback-toast" v-if="toastMessage">{{ toastMessage }}</div>
+    <header class="topbar">
+      <section class="trainer-card panel">
+        <div class="trainer-meta">
+          <div class="avatar" :style="avatarStyle"></div>
+          <div class="trainer-copy">
+            <div class="trainer-name">{{ playerName }}</div>
+            <div class="trainer-level">Lv.28</div>
+            <div class="trainer-exp">
+              <span :style="{ width: expRate + '%' }"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-strip">
+        <div class="status-pill panel">
+          <img class="status-icon" src="/icons/icon_energy_lightning.png" alt="" />
+          <div>
+            <strong>{{ energyValue }}/100</strong>
+            <span>{{ energyLabel }}</span>
+          </div>
+        </div>
+        <div class="status-pill panel">
+          <img class="status-icon" src="/icons/icon_mood_smile.png" alt="" />
+          <div>
+            <strong>{{ moodValue }}%</strong>
+            <span>{{ moodLabel }}</span>
+          </div>
+        </div>
+        <div class="status-pill panel">
+          <img class="status-icon" src="/icons/icon_coin.png" alt="" />
+          <div class="money-row">
+            <strong>{{ formatNumber(state.money) }}</strong>
+            <img class="mini-plus" src="/icons/icon_plus_coin.png" alt="" />
+          </div>
+        </div>
+        <div class="status-pill panel">
+          <img class="status-icon" src="/icons/icon_diamond.png" alt="" />
+          <div class="money-row">
+            <strong>{{ formatNumber(state.gems) }}</strong>
+            <img class="mini-plus" src="/icons/icon_plus_energy.png" alt="" />
+          </div>
+        </div>
+        <div class="status-pill panel clock-pill">
+          <div class="clock-time">{{ currentTime }}</div>
+          <div class="clock-sub">
+            <img class="status-icon weather" src="/icons/icon_weather_sun.png" alt="" />
+            <span>晴天</span>
+          </div>
+        </div>
+        <button class="gear-btn panel" type="button" @click="selectMenu('设置')" aria-label="设置">
+          <img src="/icons/icon_settings_gear.png" alt="" />
+        </button>
+      </section>
+    </header>
+
+    <main class="dashboard">
+      <aside class="left-rail">
+        <section class="panel sidebar-panel menu-panel">
+          <h2>主菜单</h2>
+          <button
+            v-for="item in menus"
+            :key="item.label"
+            class="menu-row"
+            :class="{ active: activeMenu === item.label }"
+            @click="selectMenu(item.label)"
+            type="button"
+          >
+            <img class="menu-icon" :src="item.icon" alt="" />
+            <span>{{ item.label }}</span>
+          </button>
+        </section>
+
+        <section class="panel region-panel">
+          <div class="panel-head">
+            <h2>当前区域</h2>
+            <img class="panel-head-arrow" src="/icons/icon_plus_coin.png" alt="" />
+          </div>
+          <div class="region-name">
+            <img src="/icons/region_tree.png" alt="" />
+            <span>森林小屋</span>
+          </div>
+          <div class="region-meta">
+            <span>舒适度</span>
+            <strong>Lv.{{ homeLevel }}</strong>
+          </div>
+          <div class="region-progress">
+            <span :style="{ width: regionRate + '%' }"></span>
+          </div>
+          <div class="region-score">{{ regionScore }}/{{ regionTarget }}</div>
+          <button class="upgrade-btn" type="button" @click="upgradeHome" :disabled="Boolean(busyAction)">
+            升级家园 · {{ upgradeCost }} 金币
+          </button>
+        </section>
+      </aside>
+
+      <section class="center-stage" v-if="activeMenu === '家园'">
+        <section class="panel pet-panel">
+          <div class="pet-header">
+            <div>
+              <div class="pet-title-row">
+                <h1>{{ petName }}</h1>
+                <span class="pet-gender">♂</span>
+                <button class="edit-btn" type="button" @click="renamePet" :disabled="Boolean(busyAction)" aria-label="修改宠物名字">✎</button>
+              </div>
+              <div class="pet-species">{{ petSpecies }} · {{ petForm }}</div>
+              <div class="pet-stars" aria-label="宠物星级">
+                <img v-for="n in 4" :key="n" :src="n <= 4 ? '/icons/star_full.png' : '/icons/star_empty.png'" alt="" />
+                <img src="/icons/star_empty.png" alt="" />
+              </div>
+              <div class="growth-line">
+                <span>{{ formHint }}</span>
+                <strong>成长值：{{ petGrowth }}</strong>
+              </div>
+              <div class="growth-bar">
+                <span :style="{ width: growthRate + '%' }"></span>
+              </div>
+            </div>
+            <button class="switch-btn" type="button" @click="switchPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/menu_pet.png" alt="" />
+              切换宠物
+            </button>
+          </div>
+
+          <div class="pet-scene">
+            <img class="scene-bg" src="/assets/pic/家园.png" alt="" />
+            <img class="scene-wheel" src="/icons/scene_wheel_large.png" alt="" />
+            <img class="scene-log" src="/icons/scene_log_tunnel.png" alt="" />
+            <img class="scene-food" src="/icons/scene_food_bowl.png" alt="" />
+            <img class="scene-bottle" src="/icons/scene_water_bottle.png" alt="" />
+            <img class="scene-mushroom" src="/icons/scene_mushroom.png" alt="" />
+            <img class="scene-pet" :src="petSceneImage" :alt="petSpecies" />
+          </div>
+
+          <div class="pet-stats">
+            <div class="stat-line" v-for="item in petStatusCards" :key="item.label">
+              <img :src="item.icon" alt="" />
+              <div>
+                <label>{{ item.label }}</label>
+                <strong>{{ item.value }}/100</strong>
+                <div class="tiny-bar"><span :class="item.barClass" :style="{ width: item.value + '%' }"></span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="center-stage page-stage" v-else>
+        <section class="panel menu-hero">
+          <div class="menu-hero-copy">
+            <img :src="activePage.icon" alt="" />
+            <div>
+              <h1>{{ activePage.title }}</h1>
+              <p>{{ activePage.subtitle }}</p>
+            </div>
+          </div>
+          <div class="menu-hero-stats">
+            <div v-for="stat in activePage.stats" :key="stat.label">
+              <strong>{{ stat.value }}</strong>
+              <span>{{ stat.label }}</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '宠物'">
+          <div class="panel-head">
+            <h2>宠物列表</h2>
+            <button class="small-action" type="button" @click="adoptPet" :disabled="Boolean(busyAction)">领养新宠</button>
+          </div>
+          <div class="pet-manage-grid">
+            <article class="pet-manage-card" v-for="pet in petCards" :key="pet.id" :class="{ selected: selectedPet && selectedPet.id === pet.id }">
+              <img :src="petImage(pet)" :alt="pet.species" />
+              <div>
+                <h3>{{ pet.name }}</h3>
+                <p>{{ pet.species }} · {{ pet.form || '幼体' }} · {{ pet.age }} 岁</p>
+                <div class="metric-row">
+                  <span>心情</span><strong>{{ pet.mood }}/100</strong>
+                </div>
+                <div class="metric-row">
+                  <span>健康</span><strong>{{ pet.health }}/100</strong>
+                </div>
+                <div class="metric-row">
+                  <span>成长</span><strong>{{ pet.growth || 0 }}/500</strong>
+                </div>
+              </div>
+              <div class="card-actions">
+                <button type="button" @click="selectPet(pet.id)" :disabled="Boolean(busyAction)">设为主宠</button>
+                <button type="button" @click="feedById(pet.id)" :disabled="Boolean(busyAction)">喂食</button>
+                <button type="button" @click="interactById(pet.id)" :disabled="Boolean(busyAction)">互动</button>
+                <button type="button" @click="cleanById(pet.id)" :disabled="Boolean(busyAction)">清洁</button>
+                <button type="button" @click="sellById(pet.id)" :disabled="Boolean(busyAction)">卖出</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '训练'">
+          <div class="panel-head"><h2>训练课程</h2></div>
+          <div class="feature-grid">
+            <article class="feature-card" v-for="course in trainingCourses" :key="course.title">
+              <img :src="course.icon" alt="" />
+              <h3>{{ course.title }}</h3>
+              <p>{{ course.desc }}</p>
+              <div class="metric-row"><span>消耗</span><strong>{{ course.cost }}</strong></div>
+              <button type="button" @click="trainPet" :disabled="Boolean(busyAction)">开始训练</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '探险'">
+          <div class="panel-head"><h2>探索地图</h2></div>
+          <div class="feature-grid">
+            <article class="feature-card" v-for="mission in exploreMissions" :key="mission.title">
+              <img :src="mission.icon" alt="" />
+              <h3>{{ mission.title }}</h3>
+              <p>{{ mission.desc }}</p>
+              <div class="metric-row"><span>奖励</span><strong>{{ mission.reward }}</strong></div>
+              <button type="button" @click="explorePet" :disabled="Boolean(busyAction)">派出探索</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '任务'">
+          <div class="panel-head"><h2>任务中心</h2></div>
+          <div class="task-board">
+            <article class="task-card" v-for="item in taskBoard" :key="item.label">
+              <img src="/icons/menu_tasks.png" alt="" />
+              <div>
+                <h3>{{ item.label }}</h3>
+                <p>{{ item.reward }}</p>
+              </div>
+              <button class="task-action" v-if="!item.done" type="button" @click="runPlan(item)" :disabled="Boolean(busyAction)">前往</button>
+              <strong v-else class="done">已完成</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '商店'">
+          <div class="panel-head"><h2>补给商店</h2></div>
+          <div class="shop-grid">
+            <article class="shop-card" v-for="item in shopItems" :key="item.name">
+              <img :src="item.icon" :alt="item.name" />
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.desc }}</p>
+              <div class="metric-row"><span>价格</span><strong>{{ item.price }} 金币</strong></div>
+              <button type="button" @click="buyItem(item.type)" :disabled="Boolean(busyAction)">购买</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '图鉴'">
+          <div class="panel-head"><h2>宠物图鉴</h2></div>
+          <div class="collection-grid">
+            <article class="collection-card" v-for="item in albumItems" :key="item.name">
+              <img :src="item.icon" :alt="item.name" />
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.desc }}</p>
+              <span>{{ item.state }}</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '成就'">
+          <div class="panel-head"><h2>成就进度</h2></div>
+          <div class="achievement-list">
+            <article class="achievement-row" v-for="item in achievementItems" :key="item.title">
+              <img :src="item.icon" alt="" />
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.desc }}</p>
+                <div class="achievement-bar"><span :style="{ width: item.progress + '%' }"></span></div>
+              </div>
+              <button type="button" class="claim-btn" @click="claimAchievement(item)" :disabled="Boolean(busyAction) || !item.claimable">
+                {{ item.claimed ? '已领取' : item.claimable ? `领取 ${item.reward}` : item.progress + '%' }}
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '好友'">
+          <div class="panel-head"><h2>好友小屋</h2></div>
+          <div class="friend-grid">
+            <article class="friend-card" v-for="friend in friendItems" :key="friend.name">
+              <img :src="friend.avatar" alt="" />
+              <h3>{{ friend.name }}</h3>
+              <p>{{ friend.home }}</p>
+              <span>{{ friend.status }}</span>
+              <button type="button" @click="visitFriend(friend.name)" :disabled="Boolean(busyAction)">拜访</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '规则'">
+          <div class="panel-head"><h2>游戏规则</h2></div>
+          <div class="rules-list">
+            <article class="rule-card" v-for="(rule, index) in gameRules" :key="rule.title">
+              <strong>{{ index + 1 }}</strong>
+              <div>
+                <h3>{{ rule.title }}</h3>
+                <p>{{ rule.text }}</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel menu-content" v-if="activeMenu === '设置'">
+          <div class="panel-head"><h2>游戏设置</h2></div>
+          <div class="settings-list">
+            <div class="setting-row" v-for="item in settingsRows" :key="item.label">
+              <div>
+                <h3>{{ item.label }}</h3>
+                <p>{{ item.desc }}</p>
+              </div>
+              <button class="toggle-btn" type="button" :class="{ active: item.active }" @click="toggleSetting(item.key)">
+                {{ item.value }}
+              </button>
+            </div>
+          </div>
+          <div class="settings-actions">
+            <button type="button" @click="saveGame" :disabled="Boolean(busyAction)">保存存档</button>
+            <button type="button" @click="resetGame" :disabled="Boolean(busyAction)">
+              {{ resetArmed ? '确认重开' : '重开游戏' }}
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <aside class="right-rail" v-if="activeMenu === '家园'">
+        <section class="panel actions-panel">
+          <div class="panel-head">
+            <h2>可执行动作</h2>
+            <img class="panel-head-arrow" src="/icons/icon_plus_coin.png" alt="" />
+          </div>
+          <div class="action-grid">
+            <button class="action-card" type="button" @click="feedPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_feed_bowl.png" alt="" />
+              <span>喂食</span>
+            </button>
+            <button class="action-card" type="button" @click="interactPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_interact_hand.png" alt="" />
+              <span>互动</span>
+            </button>
+            <button class="action-card" type="button" @click="cleanPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_clean_broom.png" alt="" />
+              <span>清洁</span>
+            </button>
+            <button class="action-card" type="button" @click="playPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_play_ball.png" alt="" />
+              <span>玩耍</span>
+            </button>
+            <button class="action-card" type="button" @click="trainPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_train_whistle.png" alt="" />
+              <span>训练</span>
+            </button>
+            <button class="action-card" type="button" @click="restPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_rest_house.png" alt="" />
+              <span>休息</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel plan-panel">
+          <div class="panel-head">
+            <h2>今日计划 ({{ completedPlans }}/4)</h2>
+            <img class="panel-head-arrow" src="/icons/icon_plus_coin.png" alt="" />
+          </div>
+          <div class="plan-list">
+            <div class="plan-row" v-for="item in planItems" :key="item.label">
+              <div class="plan-label">
+                <span>{{ item.label }}</span>
+                <small>{{ item.reward }}</small>
+              </div>
+              <div class="plan-state" :class="{ done: item.done }">
+                <span v-if="item.done">✓</span>
+                <button v-else type="button" @click="runPlan(item)" :disabled="Boolean(busyAction)">前往</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <aside class="right-rail" v-else>
+        <section class="panel page-summary">
+          <div class="panel-head">
+            <h2>{{ activePage.sideTitle }}</h2>
+            <img class="panel-head-arrow" src="/icons/icon_plus_coin.png" alt="" />
+          </div>
+          <div class="summary-list">
+            <div class="summary-row" v-for="item in activePage.sideItems" :key="item.label">
+              <span>{{ item.label }}</span>
+              <strong>{{ item.value }}</strong>
+            </div>
+          </div>
+        </section>
+        <section class="panel actions-panel">
+          <div class="panel-head"><h2>快捷行动</h2></div>
+          <div class="action-grid">
+            <button class="action-card" type="button" @click="feedPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_feed_bowl.png" alt="" />
+              <span>喂食</span>
+            </button>
+            <button class="action-card" type="button" @click="interactPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_interact_hand.png" alt="" />
+              <span>互动</span>
+            </button>
+            <button class="action-card" type="button" @click="cleanPet" :disabled="Boolean(busyAction)">
+              <img src="/icons/action_clean_broom.png" alt="" />
+              <span>清洁</span>
+            </button>
+            <button class="action-card" type="button" @click="saveGame" :disabled="Boolean(busyAction)">
+              <img src="/icons/menu_settings.png" alt="" />
+              <span>保存</span>
+            </button>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <section class="lower-grid" v-if="activeMenu === '家园'">
+      <section class="panel inventory-panel">
+        <div class="panel-head">
+          <h2>物品背包</h2>
+          <img class="panel-head-arrow" src="/icons/icon_plus_coin.png" alt="" />
+        </div>
+        <div class="tab-row">
+          <button v-for="tab in inventoryTabs" :key="tab" type="button" :class="{ active: activeInventoryTab === tab }" @click="activeInventoryTab = tab" :disabled="Boolean(busyAction)">{{ tab }}</button>
+        </div>
+        <div class="inventory-grid">
+          <article class="inventory-item" v-for="item in visibleInventory" :key="item.name">
+            <img :src="item.icon" :alt="item.name" />
+            <strong>x{{ item.quantity }}</strong>
+            <span>{{ item.name }}</span>
+          </article>
+        </div>
+        <div class="bag-footer">
+          <span>背包容量</span>
+          <strong>{{ bagUsed }}/{{ bagLimit }}</strong>
+          <button type="button" @click="organizeInventory" :disabled="Boolean(busyAction)">整理</button>
+        </div>
+      </section>
+
+      <section class="panel finance-panel">
+        <div class="panel-head">
+          <h2>财务状况</h2>
+          <img class="panel-head-arrow" src="/icons/icon_plus_coin.png" alt="" />
+        </div>
+        <div class="finance-list">
+          <div class="finance-row">
+            <span>金币余额</span>
+            <strong>{{ formatNumber(state.money) }}</strong>
+          </div>
+          <div class="finance-row">
+            <span>今日收入</span>
+            <strong class="gain">+{{ formatNumber(todayIncome) }}</strong>
+          </div>
+          <div class="finance-row">
+            <span>今日支出</span>
+            <strong class="loss">-{{ formatNumber(todayExpense) }}</strong>
+          </div>
+          <div class="finance-row">
+            <span>本周利润</span>
+            <strong class="gain">+{{ formatNumber(weeklyProfit) }}</strong>
+          </div>
+        </div>
+        <div class="finance-chart">
+          <span v-for="value in chartHeights" :key="value" :style="{ height: value + '%' }"></span>
+        </div>
+        <button class="finance-btn" type="button" @click="showFinanceDetails">财务明细</button>
+      </section>
+    </section>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
